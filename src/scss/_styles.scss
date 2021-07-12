@@ -1,0 +1,13 @@
+
+// [ GENERAL ]
+html { font: $font; font-weight: $f-normal; }
+body {
+    background: $dark;
+    color: $white;
+    font-smooth: antialiased;
+    -webkit-font-smoothing: antialiased;
+}
+
+a { 
+    color: $white;
+}
