@@ -9,9 +9,9 @@
     <div class="taskboard">
         <h2>Taskboard.</h2>
 
-        <Tasks :tasks="tasks.plans" />
-        <Tasks :tasks="tasks.inprogress" />
-        <Tasks :tasks="tasks.complete" />
+        <Tasks :title="'Planned (' + this.c.plans + ')'"           :tasks="tasks.plans"      />
+        <Tasks :title="'In-Progress (' + this.c.inprogress + ')'"  :tasks="tasks.inprogress" />
+        <Tasks :title="'Complete (' + this.c.complete + ')'"       :tasks="tasks.complete"   />
     </div>
 
 </template>
@@ -30,6 +30,16 @@ export default {
     },
     props: {
         tasks: Object
+    },
+    data() {
+        return {
+            // set > tasks counter
+            c: {
+                plans:      this.tasks.plans.length,
+                inprogress: this.tasks.inprogress.length,
+                complete:   this.tasks.complete.length,
+            }
+        }
     }
 }
 </script>
