@@ -527,8 +527,8 @@ a {
 
 .header {
   height: 50px;
-  margin-bottom: 50px;
-  padding: 0 50px;
+  margin-bottom: var(--m-small);
+  padding: 0 var(--m-small);
   background: #ccd5e4;
   color: #1c2533;
   display: -webkit-box;
@@ -554,7 +554,7 @@ a {
 }
 
 .taskboard {
-  padding: 0 50px;
+  padding: 0 var(--m-small);
   padding-bottom: 100px;
   color: #ccd5e4;
   -ms-flex-wrap: wrap;
@@ -573,34 +573,68 @@ a {
 }
 
 .taskboard h2 {
-  width: 100%;
   -webkit-box-flex: 1;
       -ms-flex: 1 0 100%;
           flex: 1 0 100%;
   margin-top: 0;
-  margin-bottom: 20px;
+  margin-bottom: var(--m-tiny);
   font-size: 1.6rem;
   text-align: left;
 }
 
-.button {
+.prior-guide {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0 100%;
+          flex: 1 0 100%;
+}
+
+.prior-guide div {
   max-width: -webkit-max-content;
   max-width: -moz-max-content;
   max-width: max-content;
-  margin-left: 50px;
-  margin-bottom: 50px;
-  padding: 12px 30px;
-  background: #29b385;
+  min-width: 200px;
+  margin-bottom: var(--m-tiny);
+  padding: calc( var(--m-tiny) - 5px) calc( var(--m-tiny) * 2);
+  background: #151b26;
   border-radius: 3px;
-  color: #1c2533;
-  font-size: 1.7rem;
-  font-weight: 500;
-  cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
-.button:hover {
-  background: #2ec894;
+.prior-guide div span {
+  margin: 0 25px;
+  font-size: 1.4rem;
+  position: relative;
 }
-.button:active {
+.prior-guide div span::before {
+  --size: 7px;
+  content: "";
+  display: block;
+  width: var(--size);
+  height: var(--size);
+  border-radius: var(--size);
+  background: #6a81a6;
+  position: absolute;
+  left: -15px;
+  top: 50%;
+  -webkit-transform: translateX(0) translateY(-50%);
+          transform: translateX(0) translateY(-50%);
+}
+.prior-guide div span[data-priority=urgent]::before {
+  background: #f15e83;
+}
+.prior-guide div span[data-priority=normal]::before {
+  background: #5190ee;
+}
+.prior-guide div span[data-priority=low]::before {
   background: #29b385;
 }
 
@@ -635,10 +669,51 @@ a {
   font-size: 1.6rem;
 }
 
+.button {
+  max-width: -webkit-max-content;
+  max-width: -moz-max-content;
+  max-width: max-content;
+  margin-left: 50px;
+  margin-bottom: 50px;
+  padding: 12px 30px;
+  background: #29b385;
+  border-radius: 3px;
+  color: #1c2533;
+  font-size: 1.7rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+.button:hover {
+  background: #2ec894;
+}
+.button:active {
+  background: #29b385;
+}
+
 .task-card {
   width: 100%;
   padding: 20px;
   background: #495c7a;
   margin: 10px 0;
   border-radius: 3px;
+}
+
+.priority-indicator {
+  width: 40px;
+  height: 8px;
+  border-radius: 40px;
+  margin-bottom: 10px;
+  background: #29b385;
+}
+.priority-indicator.urgent {
+  background: #f15e83;
+}
+.priority-indicator.normal {
+  background: #5190ee;
+}
+.priority-indicator.low {
+  background: #29b385;
+}
+.priority-indicator.no-prior {
+  background: #6a81a6;
 }

@@ -1,18 +1,67 @@
 
 // [ TASKBOARD ]
+ // [ taskboard container ]
 .taskboard { 
-    padding: 0 50px;
+    padding: 0 var(--m-small);;
     padding-bottom: 100px;
     color: $white;
     flex-wrap: wrap;
     @include flex-align(center, flex-start);
 }
-
 .taskboard h2 {
-    width: 100%;
     flex: 1 0 100%;
     margin-top: 0;
-    margin-bottom: 20px;
+    margin-bottom: var(--m-tiny);
     font-size: 1.6rem;
     text-align: left;
+}
+
+ // [ priorities guide ]
+.prior-guide { 
+    flex: 1 0 100%;
+} 
+.prior-guide div {
+    max-width: max-content;
+    min-width: 200px;
+    margin-bottom: var(--m-tiny);
+    padding: varset('--m-tiny - 5px') varset('--m-tiny * 2');
+    background: darken($dark, 4%);
+    border-radius: 3px;
+    @include flex-align;
+
+    span {
+        margin: 0 25px;
+        font-size: 1.4rem;
+        position: relative;
+
+        &::before {
+            --size: 7px;
+
+            content: '';
+            display: block;
+            width: var(--size); height: var(--size);
+            border-radius: var(--size);
+            background: lighten($grey, 25%);
+            @include align(left, center, absolute, -15px);
+        }
+
+        // set > priority colours
+        &[data-priority = 'urgent']::before { background: $red }
+        &[data-priority = 'normal']::before { background: $blue }
+        &[data-priority = 'low']::before    { background: $green }
+    }
+}
+
+ // [ task group ]
+.task-group { 
+    flex: 1 0 300px;
+    min-width: 300px; max-width: 500px;
+    margin: 10px;
+    padding: 20px;
+    background: $grey;
+    border-radius: 3px;
+    @include flex-align(center, flex-start, column);
+}
+.task-group-title {
+    font-size: 1.6rem;
 }

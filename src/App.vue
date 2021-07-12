@@ -23,14 +23,35 @@ export default {
                 plans: [],
                 inprogress: [],
                 complete: [],
+            },
+            priorities: {
+                urgent: 'urgent',
+                normal: 'normal',
+                low:    'low',
             }
         }
     },
     created() {
         // fill > planned tasks
         this.tasks.plans = [
-            {id: 1, title: 'plan_1', description: 'description'},
-            {id: 2, title: 'plan_2', description: 'description'},
+            {
+                id: 1, 
+                title: 'plan_1', 
+                description: 'description',
+                priority: this?.priorities?.urgent ?? 'no-prior',
+            },
+            {
+                id: 2, 
+                title: 'plan_2', 
+                description: 'description',
+                priority: this?.priorities?.normal ?? 'no-prior',
+            },
+            {
+                id: 3, 
+                title: 'plan_3', 
+                description: 'description',
+                priority: this?.priorities?.low ?? 'no-prior',
+            },
         ];
 
         // fill > in-progress tasks

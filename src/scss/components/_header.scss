@@ -2,8 +2,8 @@
 // [ HEADER ]
 .header { 
     height: 50px;
-    margin-bottom: 50px;
-    padding: 0 50px;
+    margin-bottom: var(--m-small);;
+    padding: 0 var(--m-small);;
     background: $white;
     color: $dark;
     @include flex-align(space-between);
