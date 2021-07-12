@@ -2,7 +2,7 @@
 // [ CARDS ]
 
 // [ task cards ]
-.task-card { 
+.task-group { 
     flex: 1 0 300px;
     min-width: 300px; max-width: 500px;
     margin: 10px;
@@ -11,8 +11,11 @@
     border-radius: 3px;
     @include flex-align(center, flex-start, column);
 }
+.task-group-title {
+    font-size: 1.6rem;
+}
 
-.task-card .task-item {
+.task-card {
     width: 100%;
     padding: 20px;
     background: lighten($grey, 10%);

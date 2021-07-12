@@ -15,4 +15,7 @@
     &:hover {
         background: lighten($green, 5%);
     }
+    &:active {
+        background: $green;
+    }
 }

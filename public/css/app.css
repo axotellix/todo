@@ -578,7 +578,7 @@ a {
       -ms-flex: 1 0 100%;
           flex: 1 0 100%;
   margin-top: 0;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
   font-size: 1.6rem;
   text-align: left;
 }
@@ -600,8 +600,11 @@ a {
 .button:hover {
   background: #2ec894;
 }
+.button:active {
+  background: #29b385;
+}
 
-.task-card {
+.task-group {
   -webkit-box-flex: 1;
       -ms-flex: 1 0 300px;
           flex: 1 0 300px;
@@ -628,7 +631,11 @@ a {
           align-items: flex-start;
 }
 
-.task-card .task-item {
+.task-group-title {
+  font-size: 1.6rem;
+}
+
+.task-card {
   width: 100%;
   padding: 20px;
   background: #495c7a;
