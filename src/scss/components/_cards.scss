@@ -1,0 +1,21 @@
+
+// [ CARDS ]
+
+// [ task cards ]
+.task-card { 
+    flex: 1 0 300px;
+    min-width: 300px; max-width: 500px;
+    margin: 10px;
+    padding: 20px;
+    background: $grey;
+    border-radius: 3px;
+    @include flex-align(center, flex-start, column);
+}
+
+.task-card .task-item {
+    width: 100%;
+    padding: 20px;
+    background: lighten($grey, 10%);
+    margin: 10px 0;
+    border-radius: 3px;
+}

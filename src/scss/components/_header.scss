@@ -1,0 +1,16 @@
+
+// [ HEADER ]
+.header { 
+    height: 50px;
+    margin-bottom: 50px;
+    padding: 0 50px;
+    background: $white;
+    color: $dark;
+    @include flex-align(space-between);
+    @include box-shadow;
+}
+
+.header .logo {
+    font-size: 2rem;
+    font-weight: $f-bold;
+}
