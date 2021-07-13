@@ -63,3 +63,8 @@
 	@return $result;
 
 }
+
+
+@function color($color-name) {
+	@return var(--color-#{$color-name});
+  }

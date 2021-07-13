@@ -521,6 +521,59 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+body.night {
+  background: #1c2533;
+  color: #ccd5e4;
+}
+
+body.light {
+  background: #ccd5e4;
+  color: #1c2533;
+}
+body.light .header {
+  background: #1c2533 !important;
+  color: #ccd5e4;
+}
+body.light .header a, body.light .header span {
+  color: #edf0f6;
+}
+body.light .header a.active {
+  color: #ccd5e4;
+  font-weight: 700;
+}
+body.light .taskboard h2 {
+  color: #36445a;
+}
+body.light .button {
+  color: #ccd5e4;
+}
+body.light .prior-guide div {
+  background: #bbc7db;
+}
+body.light .prior-guide div span {
+  color: #1c2533;
+}
+body.light .task-card {
+  background: #ccd5e4 !important;
+}
+body.light .task-title, body.light .form-title, body.light .task-date {
+  color: #2e3d54;
+}
+body.light .task-description {
+  color: #1c2533;
+  font-weight: 400;
+}
+body.light .ico {
+  fill: #1c2533 !important;
+}
+body.light .ico.edit {
+  fill: #29b385 !important;
+}
+body.light .task-group {
+  background: #bbc7db !important;
+  color: #36445a;
+}
+
 a {
   color: #ccd5e4;
 }
@@ -583,6 +636,33 @@ a {
 
 .header .logo {
   font-size: 2rem;
+  font-weight: 700;
+}
+
+.header .theme-controller {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.header .theme-controller a, .header .theme-controller span {
+  color: #2e3d54;
+  font-size: 1.6rem;
+  margin: 0 5px;
+  cursor: pointer;
+}
+.header .theme-controller a:hover {
+  opacity: 0.8;
+}
+.header .theme-controller a.active {
+  color: #1c2533;
   font-weight: 700;
 }
 
