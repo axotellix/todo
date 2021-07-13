@@ -1,7 +1,7 @@
 
 <!-- [ template ] -->
 <template>
-    <Modal v-if="this.show_modal" @closeModal="closeModal" />
+    <Modal v-if="this.show_modal" :tasks="tasks" @createTask="createTask" @closeModal="closeModal" />
     <Header />
     <Taskboard :tasks="tasks" @openModal="openModal" />
 </template>
@@ -27,14 +27,23 @@ export default {
         closeModal() {
             this.show_modal = false;
         },
+        createTask( new_task ) {
+            this.show_modal = false;
+            this.tasks.plans.unshift(new_task);
+        }
     },
     data() {
         return {
             show_modal: false,
             tasks: {
+                // set > array of tasks
                 plans: [],
                 inprogress: [],
                 complete: [],
+                // keep > current task max index [incremented]
+                plan_id:        2,
+                inprogress_id:  1,
+                complete_id:    1,
             },
             priorities: {
                 urgent: 'urgent',
@@ -47,38 +56,41 @@ export default {
         // fill > planned tasks
         this.tasks.plans = [
             {
-                id: 1, 
-                title: 'plan_1', 
+                id: 2, 
                 description: 'Lorem ipsum dolor site amet consectetur adipisci elit.',
                 priority: this?.priorities?.urgent ?? 'no-prior',
-                stage: 'plans'
+                date: '00:00, 01.01.2000',
+                stage: 'plans',
             },
             {
-                id: 2, 
-                title: 'plan_2', 
-                description: 'description',
+                id: 1, 
+                description: 'Lorem ipsum dolor site amet consectetur adipisci elit.',
                 priority: this?.priorities?.normal ?? 'no-prior',
-                stage: 'plans'
-            },
-            {
-                id: 3, 
-                title: 'plan_3', 
-                description: 'description',
-                priority: this?.priorities?.low ?? 'no-prior',
+                date: '00:00, 01.01.2000',
                 stage: 'plans'
             },
         ];
 
         // fill > in-progress tasks
         this.tasks.inprogress = [
-            {id: 1, title: 'inprogress_1', description: 'description'},
-            {id: 2, title: 'inprogress_2', description: 'description'},
+            {
+                id: 1, 
+                description: 'Lorem ipsum dolor site amet consectetur adipisci elit.',
+                priority: this?.priorities?.low ?? 'no-prior',
+                date: '00:00, 01.01.2000',
+                stage: 'inprogress',
+            },
         ];
 
         // fill > complete tasks
         this.tasks.complete = [
-            {id: 1, title: 'complete_1', description: 'description', stage: 'complete'},
-            {id: 2, title: 'complete_2', description: 'description'},
+             {
+                id: 1, 
+                description: 'Lorem ipsum dolor site amet consectetur adipisci elit.',
+                priority: this?.priorities?.low ?? 'no-prior',
+                date: '00:00, 01.01.2000',
+                stage: 'complete',
+            },
         ];
     }
 }

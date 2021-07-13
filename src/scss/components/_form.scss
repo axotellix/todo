@@ -6,8 +6,12 @@ form {
     background: $dark;
     border-radius: 5px;
     flex-wrap: wrap;
+    pointer-events: none;
+    z-index: 100;
     @include box-shadow('medium');
     @include flex-align;
+
+    * { pointer-events: all; }
 }
 .form-title { 
     @extend .task-title;

@@ -8,7 +8,7 @@
         <h3 class = 'task-group-title'>{{ title }}</h3>
 
         <!-- task cards -->
-        <li class = 'task-card' :key="task.id" v-for="task in tasks">
+        <li class = 'task-card' :data-id="task.id" :key="task.id" v-for="task in tasks">
             <!-- priority indicator -->
             <div class="priority-indicator" :class="task.priority"></div>
 
