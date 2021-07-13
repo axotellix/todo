@@ -34,7 +34,7 @@
                         <use xlink:href="/img/sprites.svg#ico-arrow"></use>
                     </svg>
                     <!-- control: edit -->
-                    <svg class="ico edit">
+                    <svg @click="editTask($event)" class="ico edit">
                         <use xlink:href="/img/sprites.svg#ico-edit"></use>
                     </svg>
                     <!-- control: move right -->
@@ -59,6 +59,18 @@ export default {
     props: {
         title: String,
         tasks: Array,
+    },
+    emits: ['editTask'],
+    methods: {
+        editTask( e ) {                     
+            // get > task id & stage
+            let node = e.target.parentNode.parentNode.parentNode;   //FIX: get the correct parent node
+            let id = node.getAttribute('data-id');
+            let stage = this.tasks[0].stage;
+
+            // emit > edit task method
+            this.$emit('editTask', id, stage);
+        }
     }
 }
 </script>

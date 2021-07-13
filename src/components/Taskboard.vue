@@ -18,9 +18,9 @@
         </div></div>
 
         <!-- task groups -->
-        <Tasks :title="'Planned (' + this.c.plans + ')'"           :tasks="tasks.plans"      />
-        <Tasks :title="'In-Progress (' + this.c.inprogress + ')'"  :tasks="tasks.inprogress" />
-        <Tasks :title="'Complete (' + this.c.complete + ')'"       :tasks="tasks.complete"   />
+        <Tasks @editTask="editTask" :title="'Planned (' + this.c.plans + ')'"           :tasks="tasks.plans"      />
+        <Tasks @editTask="editTask" :title="'In-Progress (' + this.c.inprogress + ')'"  :tasks="tasks.inprogress" />
+        <Tasks @editTask="editTask" :title="'Complete (' + this.c.complete + ')'"       :tasks="tasks.complete"   />
     </div>
 
 </template>
@@ -40,10 +40,13 @@ export default {
     props: {
         tasks: Object
     },
-    emits: ['openModal'],
+    emits: ['openModal', 'editTask'],
     methods: {
         openModal() {
             this.$emit('openModal');
+        },
+        editTask( id , stage ) {
+            this.$emit('editTask', id, stage);
         }
     },
     data() {
