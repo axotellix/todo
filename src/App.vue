@@ -4,12 +4,13 @@
     <EditModal v-if="show_edit_modal" :task="new_task" @save="save" />
     <Modal v-if="show_modal" :tasks="tasks" @createTask="createTask" @closeModal="closeModal" />
     <Header />
-    <Taskboard :tasks="tasks" @openModal="openModal" @editTask="editTask" />
+    <Taskboard :tasks="tasks" @setStage="setStage" @openModal="openModal" @editTask="editTask" />
 </template>
 
 
 <!-- [ scripts ] -->
 <script>
+import { ref } from 'vue'
 import EditModal from './components/EditModal'
 import Modal from './components/Modal'
 import Header from './components/Header'
@@ -68,6 +69,17 @@ export default {
             
             // close > edit modal
             this.show_edit_modal = false;
+        },
+        setStage( id , prev_stage , next_stage ) {
+            // remove > task from prev stage
+            let prev_task = this.tasks[prev_stage].filter(task => task.id == id)[0];
+            this.tasks[prev_stage] = this.tasks[prev_stage].filter(task => task.id != id);
+
+            // add > prev task to next stage
+            prev_task.id = this.tasks[next_stage + '_id'] + 1;
+            prev_task.stage = next_stage;
+            this.tasks[next_stage + '_id'] += 1;
+            this.tasks[next_stage].push(prev_task);
         }
     },
     data() {
@@ -83,11 +95,11 @@ export default {
             },
             tasks: {
                 // set > array of tasks
-                plans: [],
+                plans: ref([]),
                 inprogress: [],
                 complete: [],
                 // keep > current task max index [incremented]
-                plan_id:        2,
+                plans_id:       2,
                 inprogress_id:  1,
                 complete_id:    1,
             },
@@ -100,7 +112,7 @@ export default {
     },
     created() {
         // fill > planned tasks
-        this.tasks.plans = [
+        this.tasks.plans = ref([
             {
                 id: 2, 
                 description: 'Lorem ipsum dolor site amet consectetur adipisci elit.',
@@ -115,7 +127,7 @@ export default {
                 date: '00:00, 01.01.2000',
                 stage: 'plans'
             },
-        ];
+        ]);
 
         // fill > in-progress tasks
         this.tasks.inprogress = [

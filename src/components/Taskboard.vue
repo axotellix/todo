@@ -18,9 +18,21 @@
         </div></div>
 
         <!-- task groups -->
-        <Tasks @editTask="editTask" :title="'Planned (' + this.c.plans + ')'"           :tasks="tasks.plans"      />
-        <Tasks @editTask="editTask" :title="'In-Progress (' + this.c.inprogress + ')'"  :tasks="tasks.inprogress" />
-        <Tasks @editTask="editTask" :title="'Complete (' + this.c.complete + ')'"       :tasks="tasks.complete"   />
+        <Tasks 
+            @setStage="setStage" 
+            @editTask="editTask" :title="'Planned (' + this.c.plans + ')'"           
+            :tasks="tasks.plans"      
+        />
+        <Tasks 
+            @setStage="setStage"
+            @editTask="editTask" :title="'In-Progress (' + this.c.inprogress + ')'"  
+            :tasks="tasks.inprogress" 
+        />
+        <Tasks 
+            @setStage="setStage"
+            @editTask="editTask" :title="'Complete (' + this.c.complete + ')'"       
+            :tasks="tasks.complete"   
+        />
     </div>
 
 </template>
@@ -40,13 +52,16 @@ export default {
     props: {
         tasks: Object
     },
-    emits: ['openModal', 'editTask'],
+    emits: ['openModal', 'editTask', 'setStage'],
     methods: {
         openModal() {
             this.$emit('openModal');
         },
         editTask( id , stage ) {
             this.$emit('editTask', id, stage);
+        },
+        setStage( id , prev_stage , next_stage ) {
+            this.$emit('setStage', id, prev_stage, next_stage);
         }
     },
     data() {
@@ -58,6 +73,12 @@ export default {
                 complete:   this.tasks.complete.length,
             }
         }
+    },
+    updated() {
+        // set > tasks counter
+        this.c.plans = this.tasks.plans.length;
+        this.c.inprogress = this.tasks.inprogress.length;
+        this.c.complete = this.tasks.complete.length;
     }
 }
 </script>

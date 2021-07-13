@@ -66,7 +66,7 @@ export default {
             return x < 10 ? ('0' + x) : x;
         } 
 
-        this.new_task.id = this.tasks.plan_id + 1;
+        this.new_task.id = this.tasks.plans_id + 1;
         this.new_task.date = `${dd(d.getHours())}:${dd(d.getMinutes())}, ${dd(d.getDate())}.${dd(d.getMonth())}.${d.getFullYear()}`;
     }
 }
