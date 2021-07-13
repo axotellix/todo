@@ -102,7 +102,7 @@
         $strength: 10px 0px rgba(0, 0, 0, 0.08);
     }
     @if $strength == 'medium' {
-        $strength: 10px 3px rgba(0, 0, 0, 0.25);
+        $strength: 10px 2px rgba(0, 0, 0, 0.20);
     }
     @if $strength == 'strong' {
         $strength: 10px 5px rgba(0, 0, 0, 0.85);

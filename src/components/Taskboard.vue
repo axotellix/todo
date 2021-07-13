@@ -3,7 +3,7 @@
 <template>
 
     <!-- button: add task -->
-    <AddButton />
+    <Button type="add" @click="openModal" />
 
     <!-- taskboard -->
     <div class="taskboard">
@@ -28,17 +28,23 @@
 
 <!-- [ scripts ] -->
 <script>
-import AddButton from './buttons/AddButton'
+import Button from './buttons/Button'
 import Tasks from './tasks/Tasks'
 
 export default {
     name: 'Taskboard',
     components: {
-        AddButton,
+        Button,
         Tasks,
     },
     props: {
         tasks: Object
+    },
+    emits: ['openModal'],
+    methods: {
+        openModal() {
+            this.$emit('openModal');
+        }
     },
     data() {
         return {

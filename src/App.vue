@@ -1,24 +1,36 @@
 
 <!-- [ template ] -->
 <template>
+    <Modal v-if="this.show_modal" @closeModal="closeModal" />
     <Header />
-    <Taskboard :tasks="tasks" />
+    <Taskboard :tasks="tasks" @openModal="openModal" />
 </template>
 
 
 <!-- [ scripts ] -->
 <script>
+import Modal from './components/Modal'
 import Header from './components/Header'
 import Taskboard from './components/Taskboard'
 
 export default {
     name: 'App',
     components: {
+        Modal,   
         Header,   
         Taskboard,   
     },
+    methods: {
+        openModal() {
+            this.show_modal = true;
+        },
+        closeModal() {
+            this.show_modal = false;
+        },
+    },
     data() {
         return {
+            show_modal: false,
             tasks: {
                 plans: [],
                 inprogress: [],
