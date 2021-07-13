@@ -525,6 +525,12 @@ a {
   color: #ccd5e4;
 }
 
+.ico {
+  width: 30px;
+  height: 30px;
+  margin: 0 5px;
+}
+
 .header {
   height: 50px;
   margin-bottom: var(--m-small);
@@ -699,8 +705,8 @@ a {
 }
 
 .priority-indicator {
-  width: 40px;
-  height: 8px;
+  width: 35px;
+  height: 7px;
   border-radius: 40px;
   margin-bottom: 10px;
   background: #29b385;
@@ -716,4 +722,102 @@ a {
 }
 .priority-indicator.no-prior {
   background: #6a81a6;
+}
+
+.task-title {
+  margin-bottom: var(--m-tiny);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #abbad2;
+  letter-spacing: 0.2rem;
+}
+.task-title span {
+  font-weight: 400;
+  letter-spacing: 0.05rem;
+}
+
+.task-description {
+  font-size: 1.5rem;
+  line-height: 2.5rem;
+  color: #ccd5e4;
+  font-weight: 300;
+  letter-spacing: 0.05rem;
+}
+
+.task-footer {
+  margin-top: 35px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.task-footer .task-date {
+  position: relative;
+  display: block;
+  min-width: -webkit-max-content;
+  min-width: -moz-max-content;
+  min-width: max-content;
+  font-size: 1.3rem;
+  color: #abbad2;
+  letter-spacing: 0.1rem;
+}
+.task-footer .task-date::before {
+  content: "";
+  display: block;
+  width: 35px;
+  height: 1px;
+  background: #6883af;
+  position: absolute;
+  left: 0;
+  top: -8px;
+  -webkit-transform: translateX(0) translateY(0);
+          transform: translateX(0) translateY(0);
+}
+
+.task-footer .task-controls {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.task-footer .task-controls svg[active=false] {
+  opacity: 0.3;
+  pointer-events: none;
+  cursor: alias;
+}
+.task-footer .task-controls .ico {
+  fill: #ccd5e4;
+  cursor: pointer;
+  -webkit-transition: fill 0.25s;
+  transition: fill 0.25s;
+}
+.task-footer .task-controls .ico:hover {
+  fill: #edf0f6;
+}
+.task-footer .task-controls .ico.edit {
+  width: 22px;
+  height: 21px;
+  fill: #29b385;
+}
+.task-footer .task-controls .ico.edit:hover {
+  fill: #2ec894;
+}
+.task-footer .task-controls .ico.arrow-right {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
 }

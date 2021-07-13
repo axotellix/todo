@@ -37,20 +37,23 @@ export default {
             {
                 id: 1, 
                 title: 'plan_1', 
-                description: 'description',
+                description: 'Lorem ipsum dolor site amet consectetur adipisci elit.',
                 priority: this?.priorities?.urgent ?? 'no-prior',
+                stage: 'plans'
             },
             {
                 id: 2, 
                 title: 'plan_2', 
                 description: 'description',
                 priority: this?.priorities?.normal ?? 'no-prior',
+                stage: 'plans'
             },
             {
                 id: 3, 
                 title: 'plan_3', 
                 description: 'description',
                 priority: this?.priorities?.low ?? 'no-prior',
+                stage: 'plans'
             },
         ];
 
@@ -62,7 +65,7 @@ export default {
 
         // fill > complete tasks
         this.tasks.complete = [
-            {id: 1, title: 'complete_1', description: 'description'},
+            {id: 1, title: 'complete_1', description: 'description', stage: 'complete'},
             {id: 2, title: 'complete_2', description: 'description'},
         ];
     }
