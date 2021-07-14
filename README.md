@@ -1,24 +1,4 @@
-# todo
+# TODO. Task manager
 
-## Project setup
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+![Header](https://github.com/axotellix/todo/blob/assets/assets/img/cover.png)
+Visit: [link](http://todo.std-1370.ist.mospolytech.ru/).
