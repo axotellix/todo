@@ -1,7 +1,7 @@
 
 <!-- [ template ] -->
 <template>
-    <EditModal v-if="show_edit_modal" :task="new_task" @save="save" />
+    <EditModal v-if="show_edit_modal" :task="new_task" @save="save"  @closeModal="closeModal" />
     <Modal v-if="show_modal" :tasks="tasks" @createTask="createTask" @closeModal="closeModal" />
     <Header />
     <Taskboard :tasks="tasks" @setStage="setStage" @openModal="openModal" @editTask="editTask" @deleteTask="deleteTask" />
