@@ -4,7 +4,7 @@
     <EditModal v-if="show_edit_modal" :task="new_task" @save="save" />
     <Modal v-if="show_modal" :tasks="tasks" @createTask="createTask" @closeModal="closeModal" />
     <Header />
-    <Taskboard :tasks="tasks" @setStage="setStage" @openModal="openModal" @editTask="editTask" />
+    <Taskboard :tasks="tasks" @setStage="setStage" @openModal="openModal" @editTask="editTask" @deleteTask="deleteTask" />
 </template>
 
 
@@ -80,6 +80,9 @@ export default {
             prev_task.stage = next_stage;
             this.tasks[next_stage + '_id'] += 1;
             this.tasks[next_stage].push(prev_task);
+        },
+        deleteTask( id , stage ) {
+            this.tasks[stage] = this.tasks[stage].filter(task => task.id != id);
         }
     },
     data() {

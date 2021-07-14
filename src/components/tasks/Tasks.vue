@@ -48,8 +48,12 @@
                         <use xlink:href="/img/sprites.svg#ico-edit"></use>
                     </svg>
                     <!-- control: move right -->
-                    <svg @click="nextStage($event)" :active="task.stage!='complete'" class="ico arrow-right">
+                    <svg @click="nextStage($event)" v-if="task.stage!='complete'" :active="task.stage!='complete'" class="ico arrow-right">
                         <use xlink:href="/img/sprites.svg#ico-arrow"></use>
+                    </svg>
+                    <!-- control: move right -->
+                    <svg @click="deleteTask($event)" v-if="task.stage=='complete'" active="true" class="ico cross">
+                        <use xlink:href="/img/sprites.svg#ico-cross"></use>
                     </svg>
                 </div>
             </div>
@@ -70,7 +74,7 @@ export default {
         title: String,
         tasks: Array,
     },
-    emits: ['editTask', 'prevStage', 'nextStage'],
+    emits: ['editTask', 'prevStage', 'nextStage', 'deleteTask'],
     methods: {
         editTask( e ) {                     
             // get > task id & stage
@@ -107,6 +111,15 @@ export default {
 
              // emit > edit task method
             this.$emit('setStage', id, prev_stage, next_stage);
+        },
+        deleteTask( e ) {
+            // get > task id & stage
+            let node = e.target.parentNode.parentNode.parentNode;   //FIX: get the correct parent node
+            let id = node.getAttribute('data-id');
+            let stage = this.tasks[0].stage;
+
+             // emit > edit task method
+            this.$emit('deleteTask', id, stage);
         },
     },
     setup(props, { emit }) {

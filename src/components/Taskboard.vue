@@ -20,16 +20,19 @@
         <!-- task groups -->
         <Tasks 
             @setStage="setStage" 
+            @deleteTask="deleteTask" 
             @editTask="editTask" :title="'Planned (' + this.c.plans + ')'"           
             :tasks="tasks.plans"      
         />
         <Tasks 
             @setStage="setStage"
+            @deleteTask="deleteTask"
             @editTask="editTask" :title="'In-Progress (' + this.c.inprogress + ')'"  
             :tasks="tasks.inprogress" 
         />
         <Tasks 
             @setStage="setStage"
+            @deleteTask="deleteTask"
             @editTask="editTask" :title="'Complete (' + this.c.complete + ')'"       
             :tasks="tasks.complete"   
         />
@@ -52,7 +55,7 @@ export default {
     props: {
         tasks: Object
     },
-    emits: ['openModal', 'editTask', 'setStage'],
+    emits: ['openModal', 'editTask', 'setStage', 'deleteTask'],
     methods: {
         openModal() {
             this.$emit('openModal');
@@ -62,6 +65,9 @@ export default {
         },
         setStage( id , prev_stage , next_stage ) {
             this.$emit('setStage', id, prev_stage, next_stage);
+        },
+        deleteTask( id , stage ) {
+            this.$emit('deleteTask', id, stage);
         }
     },
     data() {
