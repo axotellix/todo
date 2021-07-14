@@ -4,7 +4,7 @@
     <!-- task group -->
     <ul 
         class = 'task-group tasks-plans' 
-        @drop="onDrop($event, tasks[0])"
+        @drop="onDrop($event)"
         @dragover.prevent
     >
 
@@ -72,6 +72,7 @@ export default {
     },
     props: {
         title: String,
+        stage: String,
         tasks: Array,
     },
     emits: ['editTask', 'prevStage', 'nextStage', 'deleteTask'],
@@ -80,7 +81,7 @@ export default {
             // get > task id & stage
             let node = e.target.parentNode.parentNode.parentNode;   //FIX: get the correct parent node
             let id = node.getAttribute('data-id');
-            let stage = this.tasks[0].stage;
+            let stage = this.stage;
 
             // emit > edit task method
             this.$emit('editTask', id, stage);
@@ -89,7 +90,7 @@ export default {
             // get > task id & stage
             let node = e.target.parentNode.parentNode.parentNode;   //FIX: get the correct parent node
             let id = node.getAttribute('data-id');
-            let prev_stage = this.tasks[0].stage;
+            let prev_stage = this.stage;
             let next_stage = prev_stage;
 
 
@@ -103,7 +104,7 @@ export default {
             // get > task id & stage
             let node = e.target.parentNode.parentNode.parentNode;   //FIX: get the correct parent node
             let id = node.getAttribute('data-id');
-            let prev_stage = this.tasks[0].stage;
+            let prev_stage = this.stage;
             let next_stage = prev_stage;
 
             if( prev_stage == 'plans' ) next_stage = 'inprogress';
@@ -116,7 +117,7 @@ export default {
             // get > task id & stage
             let node = e.target.parentNode.parentNode.parentNode;   //FIX: get the correct parent node
             let id = node.getAttribute('data-id');
-            let stage = this.tasks[0].stage;
+            let stage = this.stage;
 
              // emit > edit task method
             this.$emit('deleteTask', id, stage);
@@ -130,10 +131,10 @@ export default {
             e.dataTransfer.setData('prev_stage', item.stage.toString());
         }
 
-        const onDrop = ( e , item ) => {
+        const onDrop = ( e ) => {
             let id = e.dataTransfer.getData('id');
             let prev_stage = e.dataTransfer.getData('prev_stage');
-            let next_stage = item.stage;
+            let next_stage = props.stage;
 
              // emit > edit task method
             emit('setStage', id, prev_stage, next_stage);

@@ -22,18 +22,21 @@
             @setStage="setStage" 
             @deleteTask="deleteTask" 
             @editTask="editTask" :title="'Planned (' + this.c.plans + ')'"           
+            stage="plans"      
             :tasks="tasks.plans"      
         />
         <Tasks 
             @setStage="setStage"
             @deleteTask="deleteTask"
             @editTask="editTask" :title="'In-Progress (' + this.c.inprogress + ')'"  
+            stage="inprogress"
             :tasks="tasks.inprogress" 
         />
         <Tasks 
             @setStage="setStage"
             @deleteTask="deleteTask"
-            @editTask="editTask" :title="'Complete (' + this.c.complete + ')'"       
+            @editTask="editTask" :title="'Complete (' + this.c.complete + ')'" 
+            stage="complete"      
             :tasks="tasks.complete"   
         />
     </div>

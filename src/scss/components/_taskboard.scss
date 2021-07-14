@@ -56,12 +56,14 @@
 .task-group { 
     flex: 1 0 300px;
     min-width: 300px; max-width: 500px;
+    min-height: 200px;
     margin: 10px;
     padding: 20px;
     background: $grey;
     border-radius: 3px;
-    @include flex-align(center, flex-start, column);
+    @include flex-align(flex-start, center, column);
 }
 .task-group-title {
+    width: 100%;
     font-size: 1.6rem;
 }

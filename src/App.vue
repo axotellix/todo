@@ -10,7 +10,6 @@
 
 <!-- [ scripts ] -->
 <script>
-import { ref } from 'vue'
 import EditModal from './components/EditModal'
 import Modal from './components/Modal'
 import Header from './components/Header'
@@ -98,7 +97,7 @@ export default {
             },
             tasks: {
                 // set > array of tasks
-                plans: ref([]),
+                plans: [],
                 inprogress: [],
                 complete: [],
                 // keep > current task max index [incremented]
@@ -115,7 +114,7 @@ export default {
     },
     created() {
         // fill > planned tasks
-        this.tasks.plans = ref([
+        this.tasks.plans = [
             {
                 id: 2, 
                 description: 'Lorem ipsum dolor site amet consectetur adipisci elit.',
@@ -130,7 +129,7 @@ export default {
                 date: '00:00, 01.01.2000',
                 stage: 'plans'
             },
-        ]);
+        ];
 
         // fill > in-progress tasks
         this.tasks.inprogress = [

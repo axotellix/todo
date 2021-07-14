@@ -757,6 +757,7 @@ a {
           flex: 1 0 300px;
   min-width: 300px;
   max-width: 500px;
+  min-height: 200px;
   margin: 10px;
   padding: 20px;
   background: #36445a;
@@ -768,17 +769,18 @@ a {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -ms-flex-line-pack: start;
-      align-content: flex-start;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .task-group-title {
+  width: 100%;
   font-size: 1.6rem;
 }
 
