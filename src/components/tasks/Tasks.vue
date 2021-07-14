@@ -18,6 +18,7 @@
             v-for="task in tasks"
             draggable='true'
             @dragstart="startDrag($event, task)"
+            v-show="Object.values(priorities).indexOf(task.priority) != -1"
         >
             <!-- priority indicator -->
             <div class="priority-indicator" :class="task.priority"></div>
@@ -74,6 +75,7 @@ export default {
         title: String,
         stage: String,
         tasks: Array,
+        priorities: Array,
     },
     emits: ['editTask', 'prevStage', 'nextStage', 'deleteTask'],
     methods: {
@@ -139,6 +141,7 @@ export default {
              // emit > edit task method
             emit('setStage', id, prev_stage, next_stage);
         }
+
 
         return {
             startDrag,

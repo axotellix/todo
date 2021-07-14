@@ -573,6 +573,25 @@ body.light .task-group {
   background: #bbc7db !important;
   color: #36445a;
 }
+body.light form {
+  background: #ccd5e4;
+}
+body.light .form-title {
+  color: #36445a;
+}
+body.light input, body.light textarea, body.light select {
+  background: #bbc7db;
+  color: #1c2533;
+}
+body.light input:focus, body.light textarea:focus, body.light select:focus {
+  background: #c6cfdf;
+}
+body.light input::-webkit-input-placeholder, body.light textarea::-webkit-input-placeholder, body.light select::-webkit-input-placeholder {
+  color: rgba(28, 37, 51, 0.4);
+}
+body.light label {
+  color: #36445a;
+}
 
 a {
   color: #ccd5e4;
@@ -723,9 +742,18 @@ a {
           align-items: center;
 }
 .prior-guide div span {
+  position: relative;
   margin: 0 25px;
   font-size: 1.4rem;
-  position: relative;
+  cursor: pointer;
+  -webkit-transition: opacity 0.25s;
+  transition: opacity 0.25s;
+}
+.prior-guide div span.inactive {
+  opacity: 0.5;
+}
+.prior-guide div span:hover {
+  opacity: 0.7;
 }
 .prior-guide div span::before {
   --size: 7px;
@@ -811,6 +839,8 @@ a {
   background: #495c7a;
   margin: 10px 0;
   border-radius: 3px;
+  -webkit-transition: all 0.25s;
+  transition: all 0.25s;
 }
 
 .priority-indicator {

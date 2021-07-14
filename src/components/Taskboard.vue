@@ -12,9 +12,11 @@
 
         <!-- priorities guide-->
         <div class="prior-guide"><div>
-            <span data-priority = 'urgent'>Urgent</span>
-            <span data-priority = 'normal'>Normal</span>
-            <span data-priority = 'low'>Low</span>
+            <span @click="setPriority($event)" data-priority = 'urgent'>Urgent</span>
+            <span @click="setPriority($event)" data-priority = 'normal'>Normal</span>
+            <span @click="setPriority($event)" data-priority = 'low'>Low</span>
+            
+            <span @click="setPriority($event)" data-priority = 'all' class="inactive" v-if="prior_filter">All</span>
         </div></div>
 
         <!-- task groups -->
@@ -23,14 +25,16 @@
             @deleteTask="deleteTask" 
             @editTask="editTask" :title="'Planned (' + this.c.plans + ')'"           
             stage="plans"      
-            :tasks="tasks.plans"      
+            :tasks="tasks.plans" 
+            :priorities="priors"     
         />
         <Tasks 
             @setStage="setStage"
             @deleteTask="deleteTask"
             @editTask="editTask" :title="'In-Progress (' + this.c.inprogress + ')'"  
             stage="inprogress"
-            :tasks="tasks.inprogress" 
+            :tasks="tasks.inprogress"
+            :priorities="priors"   
         />
         <Tasks 
             @setStage="setStage"
@@ -38,6 +42,7 @@
             @editTask="editTask" :title="'Complete (' + this.c.complete + ')'" 
             stage="complete"      
             :tasks="tasks.complete"   
+            :priorities="priors"  
         />
     </div>
 
@@ -71,6 +76,36 @@ export default {
         },
         deleteTask( id , stage ) {
             this.$emit('deleteTask', id, stage);
+        },
+        setPriority( e ) {
+            // get > priority selected
+            let priority = e.target.getAttribute('data-priority');
+
+            if( priority != 'all') {
+                // fade > other controls
+                e.target.parentNode.querySelectorAll('span').forEach(p => {
+                    p.classList.add('inactive');
+                });
+                e.target.classList.remove('inactive');
+
+                // show > "select all" control
+                this.prior_filter = true;
+
+                // set > active priority
+                this.priors = [priority];
+
+            } else {
+                // hide > "select all" control
+                this.prior_filter = false;
+
+                // fade in > all controls
+                e.target.parentNode.querySelectorAll('span').forEach(p => {
+                    p.classList.remove('inactive');
+                });
+
+                // set > active priority
+                this.priors = ['urgent', 'normal', 'low'];
+            }
         }
     },
     data() {
@@ -80,7 +115,11 @@ export default {
                 plans:      this.tasks.plans.length,
                 inprogress: this.tasks.inprogress.length,
                 complete:   this.tasks.complete.length,
-            }
+            },
+
+            // set > priorities array
+            priors: ['urgent', 'normal', 'low'],
+            prior_filter: false,
         }
     },
     updated() {
