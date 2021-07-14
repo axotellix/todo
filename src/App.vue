@@ -75,9 +75,11 @@ export default {
             this.tasks[prev_stage] = this.tasks[prev_stage].filter(task => task.id != id);
 
             // add > prev task to next stage
-            prev_task.id = this.tasks[next_stage + '_id'] + 1;
             prev_task.stage = next_stage;
-            this.tasks[next_stage + '_id'] += 1;
+            if( prev_stage != next_stage ) {
+                prev_task.id = this.tasks[next_stage + '_id'] + 1;
+                this.tasks[next_stage + '_id'] += 1;
+            }
             this.tasks[next_stage].push(prev_task);
         },
         deleteTask( id , stage ) {
